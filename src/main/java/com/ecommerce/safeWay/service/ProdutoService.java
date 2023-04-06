@@ -4,10 +4,11 @@ import com.ecommerce.safeWay.repository.ProdutoRepository;
 import com.ecommerce.safeWay.repository.entities.Produto;
 import com.ecommerce.safeWay.repository.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;

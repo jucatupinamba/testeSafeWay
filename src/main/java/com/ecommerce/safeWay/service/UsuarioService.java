@@ -3,10 +3,11 @@ package com.ecommerce.safeWay.service;
 import com.ecommerce.safeWay.repository.UsuarioRepository;
 import com.ecommerce.safeWay.repository.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;

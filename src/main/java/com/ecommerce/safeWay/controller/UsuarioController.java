@@ -16,13 +16,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
-    public ResponseEntity<Usuario> criar(@RequestBody Usuario usuario){
+    @PostMapping(value = "/createUser")
+    public ResponseEntity<Usuario> criar( Usuario usuario){
         Usuario criarUsuario = usuarioService.create(usuario);
         return ResponseEntity.ok(criarUsuario);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/user{id}")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
         Usuario usuarioExistente = usuarioService.findById(id);
 
@@ -35,7 +35,7 @@ public class UsuarioController {
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteUser{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id){
         Usuario usuario = usuarioService.findById(id);
         if(usuario == null){
@@ -46,13 +46,13 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping("/getAllUser")
     public ResponseEntity<List<Usuario>> buscarTodos(@Valid @RequestBody Usuario usuario){
         List<Usuario> todosUsuarios = usuarioService.findAll(usuario);
         return ResponseEntity.ok(todosUsuarios);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscarUser{id}")
     public ResponseEntity<Usuario> buscarUsuario(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
         Usuario usuarioExistente = usuarioService.findById(id);
 

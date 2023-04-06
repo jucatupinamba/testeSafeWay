@@ -15,13 +15,13 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoService produtoService;
-    @PostMapping
-    public ResponseEntity<Produto> criar(@RequestBody Produto produto){
+    @PostMapping(value = "/createProduct")
+    public ResponseEntity<Produto> criar(Produto produto){
         Produto criarProduto = produtoService.create(produto);
         return ResponseEntity.ok(criarProduto);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/produto{id}")
     public ResponseEntity<Produto> atualizar(@PathVariable Long id, @Valid @RequestBody Produto produto){
         Produto produtoExistente = produtoService.findById(id);
 
@@ -34,7 +34,7 @@ public class ProdutoController {
 
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteProduct{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id){
         Produto produto = produtoService.findById(id);
         if(produto == null){
@@ -45,14 +45,14 @@ public class ProdutoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping("/getAllProduct")
     public ResponseEntity<List<Produto>> buscarTodos(@Valid @RequestBody Produto produto){
         List<Produto> todosProdutos = produtoService.findAll(produto);
         return ResponseEntity.ok(todosProdutos);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarUsuario(@PathVariable Long id, @Valid @RequestBody Produto produto){
+    @GetMapping("/buscarProduto{id}")
+    public ResponseEntity<Produto> buscarProduto(@PathVariable Long id, @Valid @RequestBody Produto produto){
         Produto produtoExistente = produtoService.findById(id);
 
         if(produtoExistente == null){
