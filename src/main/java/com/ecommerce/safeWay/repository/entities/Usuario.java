@@ -19,8 +19,6 @@ public class Usuario {
     private Long id;
     @NotBlank
     private String nome;
-    @NotNull
-    private String idade;
     @NotBlank
     private String email;
     @Column(unique = true)
