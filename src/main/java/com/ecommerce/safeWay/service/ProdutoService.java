@@ -36,12 +36,12 @@ public class ProdutoService {
 
     }
 
-    public List<Produto> buscarTodos(Produto produto) {
+    public List<Produto> findAll(Produto produto) {
         List<Produto> todosProdutos = produtoRepository.findAll();
         return todosProdutos;
     }
 
-    public Produto apagar(Produto produto) {
+    public Produto delete(Produto produto) {
         produtoRepository.delete(produto);
         return produto;
     }
